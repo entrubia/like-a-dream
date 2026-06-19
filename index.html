@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Like A Dream Spa - النسخة المحدثة</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Google Fonts: IBM Plex Sans Arabic & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --gold-light: #e0c9a6;
+            --soft-beige: #faf7f2;
+            --deep-brown: #2d241e;
+            --muted-text: #7a7a7a;
+            --glass: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background-color: var(--soft-beige);
+            color: var(--deep-brown);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .navbar-brand {
+            font-family: 'Playfair Display', 'IBM Plex Sans Arabic', serif;
+        }
+
+        /* تعديل عرض الحاويات لتصبح أنحف وتتوسط الموقع */
+        .container {
+            max-width: 1000px; 
+        }
+
+        /* Navbar enhancements */
+        .navbar {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            color: var(--primary-gold) !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--deep-brown) !important;
+            padding: 0.8rem 1rem !important;
+            font-size: 0.95rem;
+        }
+
+        /* تحديث صورة الخلفية للعنوان بالرابط الجديد */
+        .hero-section {
+            min-height: 75vh;
+            height: auto;
+            background: linear-gradient(rgba(45, 36, 30, 0.4), rgba(45, 36, 30, 0.2)), 
+                        url('https://up6.cc/2026/01/176847736201721.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 140px 20px 100px;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        section {
+            padding: clamp(60px, 10vw, 100px) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: clamp(40px, 8vw, 70px);
+            padding: 0 15px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--deep-brown);
+            position: relative;
+        }
+
+        .section-header h2::before {
+            content: 'Like A Dream';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-family: 'IBM Plex Sans Arabic';
+            color: var(--primary-gold);
+            letter-spacing: 3px;
+        }
+
+        /* Cards and Lists */
+        .modern-card {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            padding: clamp(25px, 5vw, 35px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(197, 160, 89, 0.12);
+        }
+
+        .gold-border-top {
+            border-top: 4px solid #ffd700 !important;
+        }
+
+        .price-circle {
+            width: 65px;
+            height: 65px;
+            background: var(--soft-beige);
+            color: var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 20px;
+            flex-shrink: 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: auto;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        /* Policies */
+        .policy-card {
+            background: white;
+            border-right: 4px solid var(--primary-gold);
+            padding: 25px;
+            border-radius: 8px;
+            height: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 576px) {
+            .navbar-brand { font-size: 1.2rem; }
+            .hero-section { 
+                clip-path: ellipse(180% 100% at 50% 0%); 
+                padding-top: 120px; 
+            }
+            .hero-content h1 { line-height: 1.2; }
+            .btn { width: 100%; margin-bottom: 10px; }
+            .price-circle { width: 55px; height: 55px; font-size: 1rem; }
+            .container {
+                max-width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        .service-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dotted #eee;
+            font-size: 0.95rem;
+        }
+
+        .category-pill {
+            display: inline-block;
+            background: var(--soft-beige);
+            color: var(--primary-gold);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://api.whatsapp.com/send/?phone=966553671827" class="whatsapp-float" target="_blank">
+        <i data-lucide="message-circle" size="28"></i>
+    </a>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">LIKE A DREAM</a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i data-lucide="menu" color="#c5a059"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#yoga">اليوغا</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#massage">المساج</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#beauty">التجميل</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nails">الأظافر</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#subs">الاشتراكات</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container hero-content">
+            <h1 class="fw-bold">عالم من الأحلام</h1>
+            <p>ملاذك الفاخر للاستجمام والجمال في قلب مدينتك، حيث تلتقي الفخامة بالراحة المطلقة.</p>
+            <div class="row justify-content-center g-3">
+                <div class="col-12 col-sm-auto">
+                    <a href="#yoga" class="btn btn-outline-light px-5 py-3 rounded-pill w-100">اكتشفي الخدمات</a>
+                </div>
+                <div class="col-12 col-sm-auto">
+                    <a href="https://api.whatsapp.com/send/?phone=966553671827" class="btn btn-light px-5 py-3 rounded-pill shadow w-100" target="_blank">احجزي الآن</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- قسم اليوغا -->
+        <section id="yoga">
+            <div class="container">
+                <div class="section-header">
+                    <h2>اليوغا والاستشفاء</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="modern-card text-center">
+                            <span class="category-pill">خدمات أساسية</span>
+                            <h4 class="fw-bold">جلسة مثل الحلم 1</h4>
+                            <div class="price-circle">500</div>
+                            <ul class="feature-list">
+                                <li><i data-lucide="check" class="ms-2"></i> يوغا أرضي مريح</li>
+                                <li><i data-lucide="check" class="ms-2"></i> خدمات أساسية مثل الحلم</li>
+                                <li><i data-lucide="check" class="ms-2"></i> مساج مريح (30 دقيقة)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="modern-card text-center">
+                            <span class="category-pill">خدمات أساسية</span>
+                            <h4 class="fw-bold">جلسة مثل الحلم 2</h4>
+                            <div class="price-circle">500</div>
+                            <ul class="feature-list">
+                                <li><i data-lucide="check" class="ms-2"></i> يوغا هوائية ممتعة</li>
+                                <li><i data-lucide="check" class="ms-2"></i> الاستشفاء الصوتي</li>
+                                <li><i data-lucide="check" class="ms-2"></i> خدمات أساسية + مساج مكثف</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-4">
+                        <div class="modern-card text-center">
+                            <span class="category-pill">جلسات خاصة</span>
+                            <h4 class="fw-bold">يوغا انفرادية</h4>
+                            <div class="price-circle">300</div>
+                            <ul class="feature-list">
+                                <li><i data-lucide="user" class="ms-2"></i> مدربة متخصصة لكِ وحدك</li>
+                                <li><i data-lucide="check" class="ms-2"></i> بيئة هادئة وتركيز عالي</li>
+                                <li><i data-lucide="check" class="ms-2"></i> خدمات أساسية مثل الحلم</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المساج والحمام -->
+        <section id="massage">
+            <div class="container">
+                <div class="section-header">
+                    <h2>الحمام والمساج</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="modern-card">
+                            <h4 class="mb-4 text-gold d-flex align-items-center">
+                                <i data-lucide="sparkles" class="ms-2"></i> جلسات المساج
+                            </h4>
+                            <div class="service-row"><span>مساج كامل الجسم</span> <span class="fw-bold">250 ر.س</span></div>
+                            <div class="service-row"><span>مساج الحامل</span> <span class="fw-bold">250 ر.س</span></div>
+                            <div class="service-row"><span>مساج لمفاوي / أخشاب</span> <span class="fw-bold">300 ر.س</span></div>
+                            <div class="mt-4 p-3 rounded-3 text-center" style="background: var(--soft-beige); border: 1px solid var(--gold-light);">
+                                <p class="mb-0 fw-bold">عرض خاص: 4 جلسات مساج بـ 1000 ر.س فقط</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="modern-card">
+                            <h4 class="mb-4 text-gold d-flex align-items-center">
+                                <i data-lucide="droplet" class="ms-2"></i> الحمام المغربي
+                            </h4>
+                            <div class="service-row"><span>حمام مغربي إيزل</span> <span class="fw-bold">300 ر.س</span></div>
+                            <div class="service-row"><span>حمام سحر الشرق</span> <span class="fw-bold">400 ر.س</span></div>
+                            <div class="service-row"><span>حمام ملكة مصر</span> <span class="fw-bold">500 ر.س</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الاشتراكات -->
+        <section id="subs">
+            <div class="container">
+                <div class="section-header">
+                    <h2>الاشتراكات الشهرية</h2>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-12 col-md-6">
+                        <div class="modern-card border-top border-4 text-center">
+                            <h3 class="fw-bold">الاشتراك الفضي</h3>
+                            <div class="display-6 fw-bold text-primary-gold my-3">1200 ر.س</div>
+                            <p class="text-muted small mb-4">أو 4 أقساط مريحة × 300 ر.س</p>
+                            <ul class="feature-list text-end">
+                                <li><i data-lucide="star" class="ms-2"></i> 5 خدمات من اختيارك</li>
+                                <li><i data-lucide="clock" class="ms-2"></i> صلاحية 3 أشهر</li>
+                                <li><i data-lucide="check" class="ms-2"></i> إمكانية تكرار الخدمة</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="modern-card gold-border-top text-center">
+                            <div class="badge bg-warning text-dark mb-3 rounded-pill">الأكثر فخامة</div>
+                            <h3 class="fw-bold">الاشتراك الذهبي</h3>
+                            <div class="display-6 fw-bold text-primary-gold my-3">2000 ر.س</div>
+                            <p class="text-muted small mb-4">أو 5 أقساط مريحة × 400 ر.س</p>
+                            <ul class="feature-list text-end">
+                                <li><i data-lucide="zap" class="ms-2"></i> 10 خدمات متكاملة</li>
+                                <li><i data-lucide="clock" class="ms-2"></i> صلاحية 3 أشهر</li>
+                                <li><i data-lucide="star" class="ms-2"></i> أولوية الحجز والمميزات</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- السياسات -->
+        <section id="policies" class="pb-5">
+            <div class="container">
+                <div class="section-header">
+                    <h2>السياسات والأنظمة</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="policy-card">
+                            <h5 class="fw-bold mb-2">الحجز والتأجيل</h5>
+                            <p class="small text-muted m-0">يرجى الإلغاء قبل 48 ساعة أو التأجيل قبل 24 ساعة لضمان العربون.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="policy-card">
+                            <h5 class="fw-bold mb-2">قواعد الزيارة</h5>
+                            <p class="small text-muted m-0">نعتذر عن استقبال الأطفال تحت 12 سنة والمرافقين لضمان هدوء المكان.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="policy-card">
+                            <h5 class="fw-bold mb-2">ضمان الرضا</h5>
+                            <p class="small text-muted m-0">يسعدنا معالجة أي ملاحظة للأظافر والرموش خلال 5 أيام من الخدمة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container text-center">
+            <h4 class="mb-4">LIKE A DREAM SPA</h4>
+            <p class="mb-4 opacity-75">للتواصل والحجز: <a href="tel:966553671827" class="text-white text-decoration-none">0553671827</a></p>
+            <div class="d-flex justify-content-center gap-4 mb-4">
+                <a href="#" class="text-white opacity-75"><i data-lucide="instagram"></i></a>
+                <a href="#" class="text-white opacity-75"><i data-lucide="facebook"></i></a>
+                <a href="https://api.whatsapp.com/send/?phone=966553671827" class="text-white opacity-75" target="_blank"><i data-lucide="message-circle"></i></a>
+            </div>
+            <p class="small opacity-25 m-0">جميع الحقوق محفوظة &copy; 2024</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        lucide.createIcons();
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    if (navbarCollapse.classList.contains('show')) {
+                        bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                    }
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
